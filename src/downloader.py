@@ -10,6 +10,9 @@ def download_youtube_video(url, output_dir):
     Parameters:
         - url (str): The URL of the YouTube video.
         - output_dir (str): The directory to save the downloaded mp3 file.
+    
+    Returns:
+        - str: The title of the YouTube video.
     """
     # Finding YouTube video
     yt = YouTube(url)
@@ -35,6 +38,7 @@ def download_youtube_video(url, output_dir):
 
     logging.info('Download complete!')
 
+    return yt.title
 
 if __name__ == '__main__':
     

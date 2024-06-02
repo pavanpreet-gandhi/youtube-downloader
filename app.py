@@ -20,7 +20,9 @@ def app():
 
         # Fetch the YouTube video and convert it to MP3
         try:
-            download_youtube_video(url=youtube_url, output_dir='audio')
+            title = download_youtube_video(url=youtube_url, output_dir='audio')
+        
+        # Handle exceptions
         except Exception as e:
             logging.error(f'An error occurred: {e}')
             fetching_message_placeholder.text('YouTube URL is invalid or the video is not available. Please try again.')
@@ -34,7 +36,7 @@ def app():
         download_button_placeholder.download_button(
             label = 'Download MP3',
             data = file_data,
-            file_name = 'audio.mp3',
+            file_name = title.lower().replace(' ', '-')+'.mp3',
             mime = 'audio/mpeg',
         )
 
